@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from loja.models.Usuario import Usuario
 from django.contrib.auth.models import User
+
 class UserUsuarioForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserUsuarioForm, self).__init__(*args, **kwargs)
@@ -21,6 +22,7 @@ class UserUsuarioForm(ModelForm):
             'perfil': forms.Select(attrs={'class': "form-control"}),
             'aniversario': forms.DateInput(attrs={'class': "form-control", "type": "date"})
         }
+
 class UserForm(ModelForm):
     class Meta:
         model = User
