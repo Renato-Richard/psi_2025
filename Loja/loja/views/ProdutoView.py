@@ -3,6 +3,7 @@ from loja.models import Produto, Fabricante, Categoria
 from datetime import timedelta, datetime
 from django.utils import timezone
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import login_required
 def list_produto_view(request, id=None):
     produto = request.GET.get("produto")
     destaque = request.GET.get("destaque")
@@ -32,6 +33,7 @@ def list_produto_view(request, id=None):
         'produtos': produtos
     }
     return render(request, template_name='produto/produto.html', context=context, status=200)
+@login_required
 def edit_produto_view(request, id=None):
     produtos = Produto.objects.all()
     if id is not None:
